@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assert in JavaScript</title> 
+    <style> 
+        .pass:before {
+            content: 'PASS ';
+            color: blue;
+            font-weight: bold;
+        }
+
+        .fail:before {
+            content: 'FAIL ';
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <ul id="output"></ul>
+    <script>
+        (function () {
+            'use strict';
+
+            var assert = function (outcome, description) {
+                var li = document.createElement('li');
+
+                li.className = outcome ? 'pass' : 'fail';
+                li.appendChild(document.createTextNode(description));
+                output.appendChild(li);
+            }
+
+            var someArray = [1,2,3,4,5],
+                len = someArray.length;
+
+            var count = 0;
+
+            /*Block scope with let*/
+            for(let i = 0; i < len; i++) (function (i){
+                setTimeout(function () {
+                        assert(count++ === i, 'Checking the value of; ' + i);
+                }, i * 300); 
+            }(i));
+
+            var add = function (num1, num2) {
+                return num1 + num2/2;
+            };
+        
+            assert(add(1,1) === 2 , 'Adding 1 and 1 should return 2');
+        }());
+
+    </script>
+</body>
+</html>
