@@ -13,14 +13,11 @@
     - _description_: A short description of your test.
     
 
-    var assert = function (outcome, description) {
-    
-        var li = document.createElement('li');
-    
-        li.className = outcome ? 'pass' : 'fail';
-        li.appendChild(document.createTextNode(description));
-        output.appendChild(li);
-    }
+
+            var assert = function (outcome, description) {
+                // code
+            };
+
 
 ### References:
 1. [stackoverflow - Javascript Assert ](http://stackoverflow.com/questions/15313418/javascript-assert)
